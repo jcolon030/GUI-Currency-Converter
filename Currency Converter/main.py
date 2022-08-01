@@ -1,4 +1,3 @@
-from concurrent.futures import process
 import tkinter as tk
 from tkinter import Frame, StringVar, ttk
 from tkinter import font
@@ -15,10 +14,9 @@ def convert_currency():
         converter = processed_data.get(convert_currency)
         finalAmount = float(conv1) * float(converter[0])
         convertAmount.set(f"{finalAmount:.2f} {convert_currency}")
-
     elif conv1 == "":
         converter = processed_data.get(convert_currency)
-        finalAmount = float(conv1) * float(converter[0])
+        finalAmount = float(conv2) / float(converter[0])
         convertAmount.set(f"{finalAmount:.2f} US Dollars")
 
 def refresh():
@@ -55,6 +53,7 @@ if __name__ == "__main__":
     style = ttk.Style()
     
     currencies = [x for x in processed_data.keys()]
+    currencies.sort()
 
     usdLabel = ttk.Label(frame, text="US Dollars")
     usdLabel.pack(pady=(15, 3))
